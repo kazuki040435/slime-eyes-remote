@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#e7f7ff">
+<title>キョロキョロスライム | BLEリモコン</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:#174566;background:#e7f7ff;font-synthesis:none}*{box-sizing:border-box}body{margin:0;min-height:100dvh;background:radial-gradient(circle at 10% 5%,#fff 0,transparent 38%),linear-gradient(155deg,#e8faff,#d5efff 65%,#f5f1ff);padding:env(safe-area-inset-top) 14px calc(24px + env(safe-area-inset-bottom))}.wrap{max-width:520px;margin:auto}header{text-align:center;padding:24px 0 13px}h1{font-size:clamp(23px,6vw,31px);letter-spacing:.02em;margin:6px 0;color:#1266a1}header p{margin:0;color:#668ca6;font-size:13px}.panel{background:rgba(255,255,255,.89);border:1px solid #fff;border-radius:25px;padding:19px;margin:14px 0;box-shadow:0 10px 32px #387ca91b}.hero{display:flex;align-items:center;justify-content:center;gap:17px;padding:5px 0 18px}.slime{width:110px;height:98px;flex-shrink:0}.hero-copy{font-weight:800;color:#2784b7;line-height:1.7}.hero-copy small{display:block;font-weight:500;color:#779db5}.status{display:flex;align-items:center;gap:8px;border-radius:12px;padding:12px 13px;background:#f0f5f9;font-size:13px;font-weight:700}.dot{width:10px;height:10px;border-radius:50%;background:#9aafbc;flex-shrink:0}.status.connected{background:#e5f9ed;color:#147c4d}.status.connected .dot{background:#20b874}.status.busy{background:#fff5d9;color:#92600c}.status.busy .dot{background:#f5b536}.status.error{background:#ffebed;color:#a42f44}.status.error .dot{background:#ed5771}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:13px}button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;border:0;border-radius:15px;min-height:51px;font-weight:800;transition:transform .12s,opacity .12s}button:active:not(:disabled){transform:scale(.965)}button:disabled{opacity:.42;cursor:not-allowed}.primary{background:linear-gradient(135deg,#16a1e9,#147bc8);color:white;box-shadow:0 5px 14px #1689d536}.secondary{background:#eaf3f8;color:#517f9c}.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.mode{padding:15px 8px;min-height:100px;color:white;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;font-size:16px}.mode span{font-size:25px}.mode small{font-size:11px;font-weight:600;opacity:.8}.gaze{background:linear-gradient(145deg,#13a3e6,#1677ca)}.random{background:linear-gradient(145deg,#a28aef,#7557ce)}.mode.active{outline:3px solid #f7c75a;outline-offset:2px}.section-title{font-size:17px;font-weight:900;margin:0 0 14px}.pattern-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.pattern{min-height:54px;background:#e9f6fd;color:#2478a9;border:1px solid #cce9f7;border-radius:13px;font-size:17px;font-variant-numeric:tabular-nums}.pattern.active{background:#188fdb;color:white;border-color:#188fdb;box-shadow:0 4px 12px #188fdb40}.hint{color:#7695a9;font-size:12px;line-height:1.7;margin:13px 0 0}.log{margin-top:10px;min-height:44px;padding:12px;border-radius:12px;background:#f2f8fc;font-size:12px;line-height:1.6;color:#527d98;overflow-wrap:anywhere}.footer{text-align:center;color:#7495ab;font-size:11px;line-height:1.7;margin:18px 0}.warning{color:#9c651f;background:#fff6e4;padding:12px;border-radius:12px;font-size:12px;line-height:1.7;margin-top:12px}[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header><h1>キョロキョロスライム</h1><p>iPhone BLE リモコン · Ver15対応</p></header>
+<section class="panel">
+<div class="hero">
+<svg class="slime" viewBox="0 0 120 110" role="img" aria-label="青いスライムのイラスト"><defs><linearGradient id="s" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#8ce6ff"/><stop offset="1" stop-color="#168fd8"/></linearGradient></defs><path d="M61 5C50 25 41 32 27 45 13 58 7 69 12 83c7 20 29 23 49 23s42-4 49-23c5-14-2-27-17-40C80 32 70 23 61 5Z" fill="url(#s)" stroke="#178cc9" stroke-width="3"/><ellipse cx="43" cy="64" rx="12" ry="16" fill="white"/><ellipse cx="79" cy="64" rx="12" ry="16" fill="white"/><ellipse cx="46" cy="66" rx="6" ry="10" fill="#193d65"/><ellipse cx="82" cy="66" rx="6" ry="10" fill="#193d65"/><path d="M48 87q13 12 26 0" fill="none" stroke="#17476a" stroke-width="4" stroke-linecap="round"/><ellipse cx="32" cy="82" rx="8" ry="4" fill="#ffb5d0" opacity=".6"/><ellipse cx="91" cy="82" rx="8" ry="4" fill="#ffb5d0" opacity=".6"/></svg>
+<div class="hero-copy">今日はどんな目にする？<small>スマホからワンタップで操作♪</small></div>
+</div>
+<div class="status" id="status" role="status" aria-live="polite"><span class="dot"></span><span id="statusText">未接続 · 接続ボタンを押してください</span></div>
+<div class="buttons"><button id="connect" class="primary">ᛒ BLE接続</button><button id="disconnect" class="secondary" disabled>切断</button></div>
+<div id="warning" class="warning" hidden></div>
+</section>
+<section class="panel"><h2 class="section-title">✨ おまかせモード</h2><div class="mode-grid"><button class="mode gaze" id="gaze" data-command="GAZE" disabled><span>👀</span>キョロキョロ<small>GAZE</small></button><button class="mode random" id="random" data-command="RANDOM" disabled><span>🎲</span>ランダム<small>RANDOM</small></button></div></section>
+<section class="panel"><h2 class="section-title">🎨 目のパターンを選ぶ</h2><div class="pattern-grid" id="patterns"></div><p class="hint">パターン番号は00〜20です。選ぶとそのパターンを固定表示します。</p></section>
+<section class="panel"><h2 class="section-title">📡 通信メッセージ</h2><div class="log" id="log" role="status" aria-live="polite">BLE機器「SlimeEyes-S3」に接続してください。</div><p class="hint">接続できない場合は、nRF Connectなど他のアプリから先に切断し、ESP32-S3が起動していることを確認してください。</p></section>
+<p class="footer">SlimeEyes-S3 · Bluetooth Low Energy<br>このページは対応ブラウザのWeb Bluetooth機能を使用します。</p>
+</main>
+<script>
+'use strict';
+const DEVICE_NAME='SlimeEyes-S3';
+const SERVICE_UUID='7d3b0001-5c27-4b78-9f9a-2d2c7be3a001';
+const COMMAND_UUID='7d3b0002-5c27-4b78-9f9a-2d2c7be3a001';
+const $=id=>document.getElementById(id);
+let device=null,characteristic=null,connected=false,connecting=false,writing=false,selectedMode=null;
+const encoder=new TextEncoder();
+const patternButtons=[];
+for(let i=0;i<=20;i++){
+ const code='P'+String(i).padStart(2,'0');
+ const button=document.createElement('button');
+ button.className='pattern';button.textContent=String(i).padStart(2,'0');button.disabled=true;
+ button.setAttribute('aria-label','パターン'+String(i).padStart(2,'0'));
+ button.addEventListener('click',()=>sendCommand(code));
+ $('patterns').appendChild(button);patternButtons.push(button);
+}
+function log(message){$('log').textContent=new Date().toLocaleTimeString('ja-JP')+'  '+message;}
+function status(kind,message){$('status').className='status '+kind;$('statusText').textContent=message;}
+function updateControls(){
+ $('connect').disabled=connecting||connected;
+ $('disconnect').disabled=!connected;
+ for(const b of patternButtons)b.disabled=!connected||writing;
+ $('gaze').disabled=!connected||writing;$('random').disabled=!connected||writing;
+}
+function showSelection(command){
+ selectedMode=command;
+ for(let i=0;i<patternButtons.length;i++)patternButtons[i].classList.toggle('active',command==='P'+String(i).padStart(2,'0'));
+ $('gaze').classList.toggle('active',command==='GAZE');
+ $('random').classList.toggle('active',command==='RANDOM');
+}
+function onDisconnected(){
+ connected=false;connecting=false;writing=false;characteristic=null;showSelection(null);
+ status('','未接続 · BLE接続してください');log('BLE接続が切断されました。再接続ボタンから接続してください。');updateControls();
+}
+async function connect(){
+ if(connecting||connected)return;
+ if(!navigator.bluetooth){status('error','このブラウザではWeb Bluetoothが利用できません');log('BluefyなどWeb Bluetooth対応ブラウザでHTTPSページを開いてください。');return;}
+ connecting=true;status('busy','BLE機器を検索しています…');updateControls();
+ try{
+  // User gesture required: requestDevice is invoked directly from the click handler.
+  const picked=await navigator.bluetooth.requestDevice({filters:[{name:DEVICE_NAME}],optionalServices:[SERVICE_UUID]});
+  if(device&&device!==picked)device.removeEventListener('gattserverdisconnected',onDisconnected);
+  device=picked;device.removeEventListener('gattserverdisconnected',onDisconnected);
+  device.addEventListener('gattserverdisconnected',onDisconnected);
+  status('busy','接続中…');
+  const server=await device.gatt.connect();
+  const service=await server.getPrimaryService(SERVICE_UUID);
+  characteristic=await service.getCharacteristic(COMMAND_UUID);
+  connected=true;status('connected','接続中 · '+(device.name||DEVICE_NAME));log('接続成功！パターンやモードを選択できます。');
+ }catch(err){
+  connected=false;characteristic=null;
+  if(device&&device.gatt&&device.gatt.connected)device.gatt.disconnect();
+  const msg=err&&err.message?err.message:String(err);
+  status('error','接続できませんでした');log('接続エラー: '+msg);
+ }finally{connecting=false;updateControls();}
+}
+function disconnect(){if(device&&device.gatt&&device.gatt.connected)device.gatt.disconnect();else onDisconnected();}
+async function sendCommand(command){
+ if(!connected||!characteristic||writing)return;
+ writing=true;updateControls();
+ try{
+  const data=encoder.encode(command);
+  if(characteristic.properties.writeWithoutResponse&&typeof characteristic.writeValueWithoutResponse==='function'){
+   await characteristic.writeValueWithoutResponse(data);
+  }else if(characteristic.properties.write&&typeof characteristic.writeValueWithResponse==='function'){
+   await characteristic.writeValueWithResponse(data);
+  }else if(typeof characteristic.writeValue==='function'){
+   await characteristic.writeValue(data);
+  }else{throw new Error('このブラウザではBLE書き込みが利用できません');}
+  showSelection(command);log('送信完了: '+command+'（ESP32側での反映は目で確認してください）');
+ }catch(err){log('送信エラー ('+command+'): '+(err.message||err));if(!device||!device.gatt.connected)onDisconnected();}
+ finally{writing=false;updateControls();}
+}
+$('connect').addEventListener('click',connect);
+$('disconnect').addEventListener('click',disconnect);
+$('gaze').addEventListener('click',()=>sendCommand('GAZE'));
+$('random').addEventListener('click',()=>sendCommand('RANDOM'));
+if(!navigator.bluetooth){$('warning').hidden=false;$('warning').textContent='Web Bluetoothが見つかりません。iPhoneではBluefyなど対応ブラウザで、HTTPSのURLから開いてください。';}
+if(!window.isSecureContext){$('warning').hidden=false;$('warning').textContent='安全な接続（HTTPS）が必要です。HTMLをHTTPSサイトに公開し、そのURLをBluefyで開いてください。';}
+updateControls();
+</script>
+</body>
+</html>
