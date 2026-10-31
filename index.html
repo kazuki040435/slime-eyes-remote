@@ -74,7 +74,7 @@ const patternButtons=[];
 for(let i=0;i<=22;i++){
  const code='P'+String(i).padStart(2,'0');
  const button=document.createElement('button');
- button.className='pattern';if(i===22)button.classList.add('special');const thumb=document.createElement('img');thumb.src=PATTERN_THUMBNAILS[i];thumb.alt='';thumb.loading='lazy';const label=document.createElement('span');label.textContent=String(i).padStart(2,'0');button.append(thumb,label);if(i===21||i===22){const name=document.createElement('small');name.className='special-label';name.textContent=i===21?'かまって':'🎃 ハロウィン';button.append(name);}button.disabled=true;
+ button.className='pattern';if(i===22)button.classList.add('special');const thumb=document.createElement('img');thumb.src=PATTERN_THUMBNAILS[i];thumb.alt='';thumb.loading='lazy';const label=document.createElement('span');label.textContent=String(i).padStart(2,'0');button.append(thumb,label);if(i===22){const name=document.createElement('small');name.className='special-label';name.textContent='🎃 ハロウィン';button.append(name);}button.disabled=true;
  button.setAttribute('aria-label','パターン'+String(i).padStart(2,'0')+(i===22?' ハロウィンスライム':''));
  button.addEventListener('click',()=>sendCommand(code));
  const cell=document.createElement('div');cell.className='pattern-cell';const star=document.createElement('button');star.className='star';star.dataset.star=String(i);star.addEventListener('click',()=>toggleFavorite(i));cell.append(button,star);$('patterns').appendChild(cell);patternButtons.push(button);
