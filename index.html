@@ -34,14 +34,14 @@
 <div id="warning" class="warning" hidden></div>
 </section>
 <section class="panel"><h2 class="section-title">✨ おまかせモード</h2><div class="mode-grid"><button class="mode gaze" id="gaze" data-command="GAZE" disabled><span>👀</span>キョロキョロ<small>GAZE</small></button><button class="mode random" id="random" data-command="RANDOM" disabled><span>🎲</span>ランダム<small>RANDOM</small></button></div></section>
-<section class="panel"><h2 class="section-title">⭐ お気に入り</h2><div class="favorites-grid" id="favorites"></div><p class="fav-empty" id="favEmpty">下のパターンの☆を押すと、ここに登録されます。</p><p class="hint">お気に入りはこのブラウザ内に保存されます。</p></section>
-<section class="panel"><h2 class="section-title">🎨 目のパターンを画像で選ぶ（00〜22）</h2><div class="pattern-grid" id="patterns"></div><p class="hint">実機の画像サムネイルを表示しています。番号は00〜22です。選ぶとそのパターンを固定表示します。☆を押すとお気に入りに登録できます。</p></section>
-<section class="panel"><h2 class="section-title">🎵 音声再生（01〜10）</h2><div class="audio-grid" id="audioButtons"></div><p class="hint">音声01〜10はDFPlayer MiniのmicroSD内にある /mp3/0001.mp3〜0010.mp3 を再生します。</p></section>
+<section class="panel"><h2 class="section-title">⭐ お気に入り</h2><div class="favorites-grid" id="favorites"></div><p class="fav-empty" id="favEmpty">下のパターンの☆を押すと、ここに登録されるよ。</p><p class="hint">お気に入りはこのブラウザ内に保存されるピキー。</p></section>
+<section class="panel"><h2 class="section-title">🎨 目のパターンを画像で選ぶ（00〜22）</h2><div class="pattern-grid" id="patterns"></div><p class="hint">実機の画像サムネイルを表示しているよ。全部で22種類。選ぶとそのパターンを固定表示するよ。☆を押すとお気に入りに登録できる！</p></section>
+<section class="panel"><h2 class="section-title">🎵 音声再生（01〜10）</h2><div class="audio-grid" id="audioButtons"></div><p class="hint">音声01〜10はmicroSD内にある /mp3/0001.mp3〜0010.mp3 を再生するピキー！</p></section>
 <section class="panel" aria-label="スラリンの声の大きさ">
 <div class="volume-head"><h2 class="section-title" style="margin:0">🔊 スラリンの声の大きさ</h2><output id="volumeValue" class="volume-value" for="volumeSlider">20 / 30</output></div>
 <input id="volumeSlider" class="volume-range" type="range" min="0" max="30" step="1" value="20" disabled aria-label="スラリンの声の大きさ">
 <div class="volume-ends"><span>🔇 0（消音）</span><span>🔊 30（最大）</span></div>
-<p class="hint">スライダーを動かすとスラリンの声の大きさを変更します。</p>
+<p class="hint">スライダーを動かすとスラリンの声の大きさを変更するよ。</p>
 </section>
 <section class="panel"><h2 class="section-title">📡 通信メッセージ</h2><div class="log" id="log" role="status" aria-live="polite">BLE機器「SlimeEyes-S3」に接続してください。</div><p class="hint">自動再接続は最大5回試行します。接続できない場合は、nRF Connectなど他のアプリから先に切断し、ESP32-S3が起動していることを確認してください。</p></section>
 <p class="footer">SlimeEyes-S3 · Bluetooth Low Energy<br>このページは対応ブラウザのWeb Bluetooth機能を使用します。<br>自動再接続は画面表示中のみ試行し、iOSの制限により成功しない場合があります。</p>
