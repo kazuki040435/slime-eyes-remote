@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#e7f7ff">
-<title>キョロキョロスライム | BLEリモコン Ver13 29パターン対応</title>
+<title>キョロキョロスライム | BLEリモコン Ver14 時計対応</title>
 <style>
 :root{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:#174566;background:#e7f7ff;font-synthesis:none}*{box-sizing:border-box}body{margin:0;min-height:100dvh;background:radial-gradient(circle at 10% 5%,#fff 0,transparent 38%),linear-gradient(155deg,#e8faff,#d5efff 65%,#f5f1ff);padding:env(safe-area-inset-top) 14px calc(24px + env(safe-area-inset-bottom))}.wrap{max-width:520px;margin:auto}header{text-align:center;padding:24px 0 13px}h1{font-size:clamp(23px,6vw,31px);letter-spacing:.02em;margin:6px 0;color:#1266a1}header p{margin:0;color:#668ca6;font-size:13px}.panel{background:rgba(255,255,255,.89);border:1px solid #fff;border-radius:25px;padding:19px;margin:14px 0;box-shadow:0 10px 32px #387ca91b}.hero{display:flex;align-items:center;justify-content:center;gap:17px;padding:5px 0 18px}.slime{width:110px;height:98px;flex-shrink:0}.hero-copy{font-weight:800;color:#2784b7;line-height:1.7}.hero-copy small{display:block;font-weight:500;color:#779db5}.status{display:flex;align-items:center;gap:8px;border-radius:12px;padding:12px 13px;background:#f0f5f9;font-size:13px;font-weight:700}.dot{width:10px;height:10px;border-radius:50%;background:#9aafbc;flex-shrink:0}.status.connected{background:#e5f9ed;color:#147c4d}.status.connected .dot{background:#20b874}.status.busy{background:#fff5d9;color:#92600c}.status.busy .dot{background:#f5b536}.status.error{background:#ffebed;color:#a42f44}.status.error .dot{background:#ed5771}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:13px}button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;border:0;border-radius:15px;min-height:51px;font-weight:800;transition:transform .12s,opacity .12s}button:active:not(:disabled){transform:scale(.965)}button:disabled{opacity:.42;cursor:not-allowed}.primary{background:linear-gradient(135deg,#16a1e9,#147bc8);color:white;box-shadow:0 5px 14px #1689d536}.secondary{background:#eaf3f8;color:#517f9c}.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.mode{padding:15px 8px;min-height:100px;color:white;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;font-size:16px}.mode span{font-size:25px}.mode small{font-size:11px;font-weight:600;opacity:.8}.gaze{background:linear-gradient(145deg,#13a3e6,#1677ca)}.random{background:linear-gradient(145deg,#a28aef,#7557ce)}.mode.active{outline:3px solid #f7c75a;outline-offset:2px}.section-title{font-size:17px;font-weight:900;margin:0 0 14px}.pattern-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.pattern{min-height:54px;background:#e9f6fd;color:#2478a9;border:1px solid #cce9f7;border-radius:13px;font-size:17px;font-variant-numeric:tabular-nums}.pattern.active{background:#188fdb;color:white;border-color:#188fdb;box-shadow:0 4px 12px #188fdb40}.hint{color:#7695a9;font-size:12px;line-height:1.7;margin:13px 0 0}.log{margin-top:10px;min-height:44px;padding:12px;border-radius:12px;background:#f2f8fc;font-size:12px;line-height:1.6;color:#527d98;overflow-wrap:anywhere}.footer{text-align:center;color:#7495ab;font-size:11px;line-height:1.7;margin:18px 0}.warning{color:#9c651f;background:#fff6e4;padding:12px;border-radius:12px;font-size:12px;line-height:1.7;margin-top:12px}[hidden]{display:none!important}
 .favorites-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.fav-empty{color:#7895a9;font-size:13px;line-height:1.6}.pattern img{display:block;width:100%;aspect-ratio:1;object-fit:contain;background:#fff;border-radius:10px;margin-bottom:4px}.pattern{padding:6px 4px;font-size:14px}.pattern-cell{position:relative;min-width:0}.pattern-cell .pattern{width:100%}.star{position:absolute;right:-4px;top:-8px;min-height:29px;min-width:29px;padding:0;border:1px solid #c7ddeb;border-radius:50%;background:#fff;color:#9ab2c1;font-size:18px;box-shadow:0 2px 6px #36799a22;z-index:1}.star.saved{color:#efad1d;background:#fff9e5;border-color:#f1d88a}.fav-pattern img{display:block;width:100%;aspect-ratio:1;object-fit:contain;background:#fff;border-radius:9px;margin-bottom:3px}.fav-pattern{padding:5px 3px;font-size:14px;min-height:52px;background:#fff7e0;border:1px solid #f5dfa2;border-radius:13px;color:#986415;font-size:17px}.fav-pattern.active{background:#f5b93f;color:#fff}.switchline{display:flex;gap:9px;align-items:center;margin-top:12px;font-size:13px;color:#507b95}.switchline input{width:18px;height:18px;accent-color:#178bd0}.slime{overflow:visible;animation:bob 3.4s ease-in-out infinite;transform-origin:center 90%}.pupil-group{animation:look 5.6s ease-in-out infinite}.slime-blink{transform-box:fill-box;transform-origin:center;animation:blink 6.7s infinite}@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-6px) rotate(2deg)}}@keyframes look{0%,15%,100%{transform:translateX(0)}25%,38%{transform:translateX(-8px)}52%,67%{transform:translateX(7px)}80%{transform:translateX(0)}}@keyframes blink{0%,92%,96%,100%{transform:scaleY(1)}94%{transform:scaleY(.08)}}@media(prefers-reduced-motion:reduce){.slime,.pupil-group,.slime-blink{animation:none!important}}
@@ -19,11 +19,19 @@
 .volume-value{font-variant-numeric:tabular-nums;font-weight:900;color:#147fc0;background:#e6f5ff;padding:6px 12px;border-radius:12px}
 .volume-range{width:100%;accent-color:#168fdb;cursor:pointer;touch-action:pan-y;min-height:38px}
 .volume-ends{display:flex;justify-content:space-between;color:#7795a9;font-size:12px;margin-top:2px}
+
+
+/* Ver14: 時計機能（Ver13の色・サムネイル・お気に入りを保持） */
+.main-tabs{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:14px 0 5px}.main-tab{min-height:57px;background:#eaf4fb;color:#407b9f;border:2px solid #cfe6f4}.main-tab.active{background:linear-gradient(135deg,#169fe4,#167cc5);color:#fff;border-color:#169fe4;box-shadow:0 6px 14px #177abb28}
+.clock-subtabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin:8px 0 15px}.clock-subtab{font-size:12px;min-height:43px;background:#e9f5fc;color:#4384ac}.clock-subtab.active{background:#177fc0;color:#fff}.clock-page[hidden],.tab-pane[hidden]{display:none!important}
+.clock-line{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.clock-line>*{flex:1;min-width:0}.clock-label{font-weight:800;font-size:13px;color:#386b89;display:block;margin:13px 0 6px}.clock-input{width:100%;min-height:44px;font:inherit;font-size:16px;color:#174566;background:#f7fcff;border:1px solid #badbea;border-radius:12px;padding:9px 10px}.clock-input:focus{outline:2px solid #76c8f4;outline-offset:0}.clock-btn-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0}.clock-btn-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.clock-button{font-size:13px;min-height:46px;padding:8px 7px}.clock-display{display:flex;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,#ebfaff,#d8effb);border-radius:20px;padding:17px 8px;margin:8px 0 12px}.clock-digit{width:95px;height:95px;border:5px solid #438dad;border-radius:50%;background:#0b1015;color:#fff;font-family:Arial,sans-serif;font-size:50px;font-weight:700;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}.clock-colon{font-size:25px;font-weight:900;color:#1686c3}.clock-kpi{text-align:center;font-size:12px;color:#608eaa}.clock-kpi strong{display:block;font-size:25px;color:#146a9e;font-variant-numeric:tabular-nums}.clock-info{background:#eaf6fe;color:#3b799f;padding:12px;border-radius:12px;font-size:12px;line-height:1.7;margin:10px 0}.clock-state{font-weight:800;color:#147ec4}.clock-card{border:1px solid #d1eafa;border-radius:17px;padding:14px;margin:11px 0;background:#fafdff}.clock-card h3{margin:0 0 6px;font-size:16px;color:#246c9c}.clock-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin:8px 0}.clock-days label{display:flex;align-items:center;justify-content:center;gap:3px;flex-direction:column;border-radius:9px;background:#eaf5fc;padding:8px 0;font-size:11px;color:#326e94}.clock-days input{accent-color:#178fd0}.clock-mini{font-size:12px;color:#628ca5}.clock-preset{display:grid;grid-template-columns:36px 1fr 1fr 85px;align-items:center;gap:7px;margin:9px 0}.clock-preset .clock-input{padding:7px 6px;min-height:39px;font-size:14px}.clock-preset button{min-height:40px;font-size:12px}.clock-notice{background:#fff2dc;color:#946022;border-radius:12px;padding:12px;font-size:12px;line-height:1.7}.clock-pill{display:inline-block;background:#dbf5e7;color:#18835b;font-size:11px;font-weight:800;border-radius:14px;padding:4px 9px}.clock-status-line{font-size:13px;color:#497e9c;margin:8px 0;line-height:1.7}
+@media(max-width:390px){.clock-digit{width:80px;height:80px;font-size:43px}.clock-preset{grid-template-columns:28px 1fr 1fr 70px;gap:4px}.clock-button{font-size:12px}}
+
 </style>
 </head>
 <body>
 <main class="wrap">
-<header><h1>キョロキョロスライム</h1><p>iPhone BLE リモコン · 29パターン＋音声10個 Ver13</p></header>
+<header><h1>キョロキョロスライム</h1><p>iPhone BLE リモコン · 29パターン＋時計・アラーム・タイマー Ver14</p></header>
 <section class="panel">
 <div class="hero">
 <svg class="slime" viewBox="0 0 120 110" role="img" aria-label="青いスライムのイラスト"><defs><linearGradient id="s" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#8ce6ff"/><stop offset="1" stop-color="#168fd8"/></linearGradient></defs><path d="M61 5C50 25 41 32 27 45 13 58 7 69 12 83c7 20 29 23 49 23s42-4 49-23c5-14-2-27-17-40C80 32 70 23 61 5Z" fill="url(#s)" stroke="#178cc9" stroke-width="3"/><g class="slime-blink"><ellipse cx="43" cy="64" rx="12" ry="16" fill="white"/><ellipse cx="79" cy="64" rx="12" ry="16" fill="white"/><g class="pupil-group"><ellipse cx="46" cy="66" rx="6" ry="10" fill="#193d65"/><ellipse cx="82" cy="66" rx="6" ry="10" fill="#193d65"/></g></g><path d="M48 87q13 12 26 0" fill="none" stroke="#17476a" stroke-width="4" stroke-linecap="round"/><ellipse cx="32" cy="82" rx="8" ry="4" fill="#ffb5d0" opacity=".6"/><ellipse cx="91" cy="82" rx="8" ry="4" fill="#ffb5d0" opacity=".6"/></svg>
@@ -33,6 +41,8 @@
 <div class="buttons"><button id="connect" class="primary">ᛒ BLE接続</button><button id="disconnect" class="secondary" disabled>切断</button></div><label class="switchline"><input type="checkbox" id="autoReconnect" checked>切断時に自動再接続を試みる（画面を開いている間）</label>
 <div id="warning" class="warning" hidden></div>
 </section>
+<nav class="main-tabs" role="tablist" aria-label="操作カテゴリー"><button id="mainOld" class="main-tab active" type="button" role="tab" aria-selected="true">👀 従来の操作</button><button id="mainClock" class="main-tab" type="button" role="tab" aria-selected="false">⏰ 時計機能</button></nav>
+<div id="oldPane" class="tab-pane">
 <section class="panel"><h2 class="section-title">✨ おまかせモード</h2><div class="mode-grid"><button class="mode gaze" id="gaze" data-command="GAZE" disabled><span>👀</span>キョロキョロ<small>GAZE</small></button><button class="mode random" id="random" data-command="RANDOM" disabled><span>🎲</span>ランダム<small>RANDOM</small></button></div></section>
 <section class="panel"><h2 class="section-title">⭐ お気に入り</h2><div class="favorites-grid" id="favorites"></div><p class="fav-empty" id="favEmpty">下のパターンの☆を押すと、ここに登録されるよ。</p><p class="hint">お気に入りはこのブラウザ内に保存されるピキー。</p></section>
 <section class="panel"><h2 class="section-title">🎨 目のパターンを画像で選ぶ（00〜28）</h2><div class="pattern-grid" id="patterns"></div><p class="hint">実機の画像サムネイルを表示しているよ。全部で29種類。Pattern26 は白背景の丸い寝顔サムネイルだよ。選ぶとそのパターンを固定表示するよ。☆を押すとお気に入りに登録できる！</p></section>
@@ -43,6 +53,48 @@
 <div class="volume-ends"><span>🔇 0（消音）</span><span>🔊 30（最大）</span></div>
 <p class="hint">スライダーを動かすとスラリンの声の大きさを変更するよ。</p>
 </section>
+</div>
+<div id="clockPane" class="tab-pane" hidden>
+<section class="panel">
+<h2 class="section-title">⏰ 時計・時報・アラーム・タイマー</h2>
+<div id="clockCompat" class="clock-info">Ver92に接続すると、時計機能の設定が自動で読み込まれるよ。</div>
+<div class="clock-subtabs" role="tablist"><button data-clock-tab="watch" class="clock-subtab active" type="button">時計</button><button data-clock-tab="chime" class="clock-subtab" type="button">時報</button><button data-clock-tab="alarm" class="clock-subtab" type="button">アラーム</button><button data-clock-tab="timer" class="clock-subtab" type="button">タイマー</button></div>
+<div id="clockWatch" class="clock-page">
+<div class="clock-display"><div><div class="clock-digit" id="clockH">--</div><div class="clock-kpi">時</div></div><div class="clock-colon">:</div><div><div class="clock-digit" id="clockM">--</div><div class="clock-kpi">分</div></div></div>
+<p id="clockDateText" class="clock-status-line">本体の日時：未取得</p>
+<div class="clock-btn-grid"><button class="primary clock-button" data-rtc-cmd="CLK1">🕒 時計を表示</button><button class="secondary clock-button" data-rtc-cmd="CLK0">👀 目に戻す</button><button class="primary clock-button" data-rtc-cmd="TD1">⏳ タイマー表示</button><button class="secondary clock-button" data-rtc-cmd="TD0">👀 目に戻す</button></div>
+<button id="syncPhoneTime" class="primary clock-button" style="width:100%">📱 スマホの現在時刻をDS3231へ同期</button>
+<label class="clock-label" for="manualRtc">手動で日時を設定</label><input class="clock-input" type="datetime-local" id="manualRtc" step="1">
+<div class="clock-btn-grid"><button class="secondary clock-button" id="setManualRtc">設定した日時を送信</button><button class="secondary clock-button" id="refreshClock">🔄 本体の設定を再取得</button></div>
+<p class="clock-info">スマホ同期ではスマホ端末のローカル日時を送信します。時計モード中は本体LCDの左が時、右が分です。</p>
+</div>
+<div id="clockChime" class="clock-page" hidden>
+<p class="clock-status-line">時報設定：<strong id="chimeStatus">未取得</strong></p>
+<div class="clock-btn-grid"><button class="primary clock-button" data-rtc-cmd="CH1">🔔 時報 ON</button><button class="secondary clock-button" data-rtc-cmd="CH0">🔕 時報 OFF</button></div>
+<label class="clock-label">鳴らさない時間帯（開始・終了）</label>
+<div class="clock-line"><input class="clock-input" id="quietStart" type="time" value="23:00" aria-label="時報禁止開始"><span style="flex:0 0 auto">〜</span><input class="clock-input" id="quietEnd" type="time" value="07:00" aria-label="時報禁止終了"></div>
+<button class="secondary clock-button" id="saveQuiet" style="width:100%;margin-top:8px">禁止時間帯を保存</button>
+<label class="clock-label" for="chimeMp3">時報MP3番号（0001〜9999）</label><input class="clock-input" id="chimeMp3" type="number" min="1" max="9999" value="11">
+<button class="secondary clock-button" id="saveChimeMp3" style="width:100%;margin-top:8px">時報の音を保存</button>
+<p class="clock-info">時報は毎時00分に一度だけ鳴り、禁止時間帯は鳴らないよ。</p>
+</div>
+<div id="clockAlarm" class="clock-page" hidden>
+<p class="clock-info">アラームは最大5件。曜日を選ぶ「繰り返し」と、次の設定時刻に一度だけ鳴る「1回限り」が使えるよ。</p>
+<div id="clockAlarmList"></div>
+</div>
+<div id="clockTimer" class="clock-page" hidden>
+<div class="clock-display"><div><div class="clock-digit" id="timerM">00</div><div class="clock-kpi">分</div></div><div class="clock-colon">:</div><div><div class="clock-digit" id="timerS">00</div><div class="clock-kpi">秒</div></div></div>
+<p class="clock-status-line">タイマー状態：<strong id="timerStatus">未取得</strong></p>
+<label class="clock-label">設定時間（最大99分59秒）</label>
+<div class="clock-line"><input class="clock-input" id="timerMinutes" type="number" min="0" max="99" value="5" aria-label="設定分"><span style="flex:0 0 auto">分</span><input class="clock-input" id="timerSeconds" type="number" min="0" max="59" value="0" aria-label="設定秒"><span style="flex:0 0 auto">秒</span></div>
+<div class="clock-btn-grid"><button class="secondary clock-button" id="setTimer">時間をセット</button><button class="primary clock-button" data-rtc-cmd="TSTART">▶ 開始／再開</button><button class="secondary clock-button" data-rtc-cmd="TPAUSE">⏸ 一時停止</button><button class="secondary clock-button" data-rtc-cmd="TRESET">↺ リセット</button><button class="secondary clock-button" data-rtc-cmd="TD1">LCDにタイマー表示</button><button class="secondary clock-button" data-rtc-cmd="TD0">LCD表示を終了</button></div>
+<label class="clock-label" for="timerMp3">タイマー終了MP3番号</label><div class="clock-line"><input class="clock-input" id="timerMp3" type="number" min="1" max="9999" value="13"><button id="saveTimerMp3" class="secondary clock-button">保存</button></div>
+<h3 class="section-title" style="margin-top:22px">⭐ 保存できるプリセット（5件）</h3><div id="clockPresets"></div>
+<p class="clock-info">タイマーは画面を切り替えても本体で進み続けるよ。終了時は専用画面と音声で知らせるよ。</p>
+</div>
+</section>
+<section class="panel"><h2 class="section-title">🔔 通知を止める</h2><button id="stopClockNotify" class="primary" style="width:100%;background:linear-gradient(135deg,#ed7794,#c94a7e)">■ アラーム・タイマー・時報を停止</button><p class="hint">音が鳴っているときに押してね。通知中は通常の操作より停止操作を優先するよ。</p></section>
+</div>
 <section class="panel"><h2 class="section-title">📡 通信メッセージ</h2><div class="log" id="log" role="status" aria-live="polite">BLE機器「SlimeEyes-S3」に接続してください。</div><p class="hint">自動再接続は最大5回試行します。接続できない場合は、nRF Connectなど他のアプリから先に切断し、ESP32-S3が起動していることを確認してください。</p></section>
 <p class="footer">SlimeEyes-S3 · Bluetooth Low Energy<br>このページは対応ブラウザのWeb Bluetooth機能を使用します。<br>自動再接続は画面表示中のみ試行し、iOSの制限により成功しない場合があります。</p>
 </main>
@@ -263,5 +315,147 @@ if(!navigator.bluetooth){$('warning').hidden=false;$('warning').textContent='Web
 if(!window.isSecureContext){$('warning').hidden=false;$('warning').textContent='安全な接続（HTTPS）が必要です。HTMLをHTTPSサイトに公開し、そのURLをBluefyで開いてください。';}
 updateControls();
 </script>
+
+<script>
+'use strict';
+// ============================================================
+// Ver14 時計連携（Ver92の実際のCSV形式に対応）
+// ============================================================
+const CLOCK_UUIDS={state:'7d3b0004-5c27-4b78-9f9a-2d2c7be3a001',config:'7d3b0005-5c27-4b78-9f9a-2d2c7be3a001',alarms:'7d3b0006-5c27-4b78-9f9a-2d2c7be3a001',presets:'7d3b0007-5c27-4b78-9f9a-2d2c7be3a001'};
+let clockChars={};let clockFeatureReady=false;let clockFetching=false;let clockLastSync=0;
+const pad2=n=>String(n).padStart(2,'0');
+const pad4=n=>String(n).padStart(4,'0');
+const v14id=id=>document.getElementById(id);
+const v14Days=['月','火','水','木','金','土','日'];
+function v14Tab(tab){
+ const old=tab==='old';v14id('oldPane').hidden=!old;v14id('clockPane').hidden=old;
+ v14id('mainOld').classList.toggle('active',old);v14id('mainClock').classList.toggle('active',!old);
+ v14id('mainOld').setAttribute('aria-selected',String(old));v14id('mainClock').setAttribute('aria-selected',String(!old));
+ if(!old&&connected&&clockFeatureReady)clockSync(false);
+}
+v14id('mainOld').addEventListener('click',()=>v14Tab('old'));
+v14id('mainClock').addEventListener('click',()=>v14Tab('clock'));
+document.querySelectorAll('[data-clock-tab]').forEach(btn=>btn.addEventListener('click',()=>{
+ const tab=btn.dataset.clockTab;
+ document.querySelectorAll('[data-clock-tab]').forEach(b=>b.classList.toggle('active',b===btn));
+ for(const n of ['Watch','Chime','Alarm','Timer'])v14id('clock'+n).hidden=n.toLowerCase()!==tab;
+}));
+function v14Info(text,error=false){const el=v14id('clockCompat');el.textContent=text;el.style.background=error?'#fff0ee':'#eaf6fe';el.style.color=error?'#a13e48':'#3b799f';}
+function v14TimeInput(mm){if(!Number.isFinite(mm)||mm<0||mm>=1440)return '00:00';return pad2(Math.floor(mm/60))+':'+pad2(mm%60);}
+function v14Minutes(id){const m=/^(\d{2}):(\d{2})$/.exec(v14id(id).value);if(!m)throw Error('時刻を選択してください');const h=Number(m[1]),mi=Number(m[2]);if(h>23||mi>59)throw Error('時刻が不正です');return {h,mi};}
+function v14Mp3(id){const raw=v14id(id).value;if(!/^\d{1,4}$/.test(raw))throw Error('MP3番号は1〜9999で指定してください');const n=Number(raw);if(n<1||n>9999)throw Error('MP3番号は1〜9999で指定してください');return n;}
+function v14TimerParts(minId,secId){const m=Number(v14id(minId).value),s=Number(v14id(secId).value);if(!Number.isInteger(m)||!Number.isInteger(s)||m<0||m>99||s<0||s>59||m*60+s<1)throw Error('時間は00:01〜99:59で設定してください');return {m,s};}
+async function v14Read(which){const dv=await clockChars[which].readValue();return new TextDecoder().decode(dv).trim();}
+function v14RenderState(text){
+ // C1,D0,R1,20261118140030,T1,120,N0
+ const a=/^C([01]),D([01]),R([01]),(\d{14}),T([012]),(\d+),N([0-3])$/.exec(text);
+ if(!a)throw Error('本体の状態形式が不明: '+text);
+ const d=a[4];v14id('clockH').textContent=d.slice(8,10);v14id('clockM').textContent=d.slice(10,12);
+ v14id('clockDateText').textContent=`本体の日時：${d.slice(0,4)}/${d.slice(4,6)}/${d.slice(6,8)} ${d.slice(8,10)}:${d.slice(10,12)}:${d.slice(12,14)} ／ RTC ${a[3]==='1'?'正常':'無効・未接続'} ／ 表示：${a[1]==='1'?'時計':a[2]==='1'?'タイマー':'目'}`;
+ const seconds=Number(a[6]);v14id('timerM').textContent=pad2(Math.floor(seconds/60));v14id('timerS').textContent=pad2(seconds%60);
+ const tstate=['停止','計測中','一時停止'][Number(a[5])];
+ v14id('timerStatus').textContent=`${tstate} ／ 通知：${['なし','アラーム','タイマー終了','時報'][Number(a[7])]}`;
+}
+function v14RenderConfig(text){
+ const a=/^CH([01]),(\d{4}),(\d{4}),(\d{4}),TM(\d{4})$/.exec(text);
+ if(!a)throw Error('時報設定形式が不明: '+text);
+ v14id('chimeStatus').textContent=a[1]==='1'?'ON':'OFF';
+ v14id('quietStart').value=v14TimeInput(Number(a[2]));v14id('quietEnd').value=v14TimeInput(Number(a[3]));
+ v14id('chimeMp3').value=Number(a[4]);v14id('timerMp3').value=Number(a[5]);
+}
+function v14RenderAlarms(text){
+ // 1,1,0,0730,127,0012;...
+ const entries=text.split(';');if(entries.length!==5)throw Error('アラームが5件ではありません');
+ entries.forEach((s,i)=>{
+  const a=/^([1-5]),([01]),([01]),(\d{4}),(\d{1,3}),(\d{1,4})$/.exec(s);
+  if(!a)throw Error('アラーム設定が不正: '+s);
+  const n=i+1;
+  v14id('alarmTime'+n).value=a[4].slice(0,2)+':'+a[4].slice(2,4);
+  v14id('alarmType'+n).value=a[3]==='1'?'once':'weekly';v14id('alarmMp3'+n).value=Number(a[6]);
+  const mask=Number(a[5]);for(let bit=0;bit<7;bit++)v14id('alarmDay'+n+'_'+bit).checked=!!(mask&(1<<bit));
+  v14id('alarmSummary'+n).textContent=(a[2]==='1'?'有効':'OFF')+' / '+(a[3]==='1'?'1回限り':'曜日指定');
+  v14UpdateAlarmDay(n);
+ });
+}
+function v14RenderPresets(text){const entries=text.split(',');if(entries.length!==5)throw Error('プリセットの形式が不正');entries.forEach((s,i)=>{const total=Number(s);if(!Number.isInteger(total)||total<1||total>5999)throw Error('プリセット値が不正');v14id('presetMin'+(i+1)).value=Math.floor(total/60);v14id('presetSec'+(i+1)).value=total%60;});}
+async function clockSync(full=true){
+ if(!connected||!clockFeatureReady||clockFetching||writing)return;
+ clockFetching=true;
+ try{
+  const state=await v14Read('state');v14RenderState(state);
+  if(full){v14RenderConfig(await v14Read('config'));v14RenderAlarms(await v14Read('alarms'));v14RenderPresets(await v14Read('presets'));}
+  clockLastSync=Date.now();v14Info('✅ Ver92と接続中。日時・設定はESP32から取得しています。');
+ }catch(e){v14Info('状態取得に失敗しました: '+(e.message||e),true);log('Ver14 時計取得失敗: '+(e.message||e));}
+ finally{clockFetching=false;}
+}
+async function clockConnect(){
+ clockChars={};clockFeatureReady=false;
+ if(!device||!device.gatt||!device.gatt.connected)return;
+ try{
+  const service=await device.gatt.getPrimaryService(SERVICE_UUID);
+  for(const [name,uuid] of Object.entries(CLOCK_UUIDS))clockChars[name]=await service.getCharacteristic(uuid);
+  clockFeatureReady=true;
+  await clockSync(true);
+ }catch(e){v14Info('Ver92用の状態取得が使えません。Ver92本体に書き込まれているか確認してください。 '+(e.message||e),true);log('Ver14時計機能: '+(e.message||e));}
+}
+// Ver13の接続処理をそのまま生かし、接続後だけ時計の設定を追加取得。
+const v14BaseSetupConnection=setupConnection;
+setupConnection=async function(target){await v14BaseSetupConnection(target);await clockConnect();};
+const v14BaseDisconnected=onDisconnected;
+onDisconnected=function(){clockFeatureReady=false;clockChars={};v14Info('切断されました。再接続すると本体の設定を取得します。');v14BaseDisconnected();};
+async function v14Send(cmd){
+ if(!connected){v14Info('先にBLE接続してください。',true);return false;}
+ if(!clockFeatureReady){v14Info('Ver92との時計通信が利用できません。',true);return false;}
+ if(writing){v14Info('通信中です。操作をもう一度行ってください。',true);return false;}
+ try{
+  await sendCommand(cmd);
+  // 状態の反映にわずかに時間が必要な場合がある。
+  await new Promise(resolve=>setTimeout(resolve,260));
+  await clockSync(true);
+  return true;
+ }catch(e){v14Info('送信に失敗: '+(e.message||e),true);return false;}
+}
+async function v14Action(fn){try{await fn();}catch(e){v14Info(e.message||String(e),true);log('入力エラー: '+(e.message||e));}}
+document.querySelectorAll('[data-rtc-cmd]').forEach(b=>b.addEventListener('click',()=>v14Action(()=>v14Send(b.dataset.rtcCmd))));
+v14id('stopClockNotify').addEventListener('click',()=>v14Action(()=>v14Send('STOP')));
+v14id('refreshClock').addEventListener('click',()=>clockSync(true));
+function v14DateTimeCommand(d){return 'RTC='+String(d.getFullYear())+pad2(d.getMonth()+1)+pad2(d.getDate())+pad2(d.getHours())+pad2(d.getMinutes())+pad2(d.getSeconds());}
+v14id('syncPhoneTime').addEventListener('click',()=>v14Action(()=>v14Send(v14DateTimeCommand(new Date()))));
+v14id('setManualRtc').addEventListener('click',()=>v14Action(async()=>{const val=v14id('manualRtc').value;if(!val)throw Error('日時を入力してください');const d=new Date(val);if(Number.isNaN(d.getTime()))throw Error('日時が不正です');await v14Send(v14DateTimeCommand(d));}));
+v14id('saveQuiet').addEventListener('click',()=>v14Action(async()=>{const a=v14Minutes('quietStart'),b=v14Minutes('quietEnd');await v14Send('CHQ'+pad2(a.h)+pad2(a.mi)+pad2(b.h)+pad2(b.mi));}));
+v14id('saveChimeMp3').addEventListener('click',()=>v14Action(async()=>{await v14Send('CHM'+pad4(v14Mp3('chimeMp3')));}));
+v14id('saveTimerMp3').addEventListener('click',()=>v14Action(async()=>{await v14Send('TM'+pad4(v14Mp3('timerMp3')));}));
+v14id('setTimer').addEventListener('click',()=>v14Action(async()=>{const {m,s}=v14TimerParts('timerMinutes','timerSeconds');await v14Send('T='+pad2(m)+pad2(s));}));
+function v14UpdateAlarmDay(n){const weekly=v14id('alarmType'+n).value==='weekly';v14id('alarmDays'+n).style.opacity=weekly?'1':'.43';v14id('alarmDays'+n).querySelectorAll('input').forEach(x=>x.disabled=!weekly);}
+// 5アラーム編集欄を動的に構築
+for(let n=1;n<=5;n++){
+ const card=document.createElement('div');card.className='clock-card';
+ card.innerHTML=`<h3>⏰ アラーム ${n} <span id="alarmSummary${n}" class="clock-mini">未取得</span></h3>
+ <div class="clock-line"><label class="clock-label" style="flex:1">時刻<input class="clock-input" type="time" id="alarmTime${n}" value="07:00"></label>
+ <label class="clock-label" style="flex:1">種類<select class="clock-input" id="alarmType${n}"><option value="weekly">曜日指定</option><option value="once">1回限り</option></select></label></div>
+ <div class="clock-days" id="alarmDays${n}">${v14Days.map((d,i)=>`<label>${d}<input type="checkbox" id="alarmDay${n}_${i}" ${i<5?'checked':''}></label>`).join('')}</div>
+ <label class="clock-label">MP3番号（0001〜9999）<input class="clock-input" id="alarmMp3${n}" type="number" min="1" max="9999" value="12"></label>
+ <div class="clock-btn-grid"><button class="primary clock-button" id="saveAlarm${n}">✅ 保存・ON</button><button class="secondary clock-button" id="offAlarm${n}">OFF</button></div>`;
+ v14id('clockAlarmList').appendChild(card);
+ v14id('alarmType'+n).addEventListener('change',()=>v14UpdateAlarmDay(n));
+ v14id('saveAlarm'+n).addEventListener('click',()=>v14Action(async()=>{
+  const t=v14Minutes('alarmTime'+n);const once=v14id('alarmType'+n).value==='once';let mask=0;
+  if(!once){for(let i=0;i<7;i++)if(v14id('alarmDay'+n+'_'+i).checked)mask|=1<<i;if(!mask)throw Error('曜日を1つ以上選んでください');}
+  const track=v14Mp3('alarmMp3'+n);const cmd='A'+n+'='+pad2(t.h)+pad2(t.mi)+','+mask+','+pad4(track)+','+(once?1:0);
+  await v14Send(cmd);
+ }));
+ v14id('offAlarm'+n).addEventListener('click',()=>v14Action(()=>v14Send('A'+n+'OFF')));
+}
+for(let n=1;n<=5;n++){
+ const row=document.createElement('div');row.className='clock-preset';
+ row.innerHTML=`<strong>${n}</strong><input class="clock-input" id="presetMin${n}" type="number" min="0" max="99" value="${n*5}" aria-label="プリセット${n}分"><input class="clock-input" id="presetSec${n}" type="number" min="0" max="59" value="0" aria-label="プリセット${n}秒"><div style="display:grid;gap:4px"><button class="secondary" id="presetSave${n}" style="min-height:34px;font-size:12px">保存</button><button class="primary" id="presetGo${n}" style="min-height:34px;font-size:12px">▶ 開始</button></div>`;
+ v14id('clockPresets').appendChild(row);
+ v14id('presetSave'+n).addEventListener('click',()=>v14Action(async()=>{const {m,s}=v14TimerParts('presetMin'+n,'presetSec'+n);await v14Send('P'+n+'='+pad2(m)+pad2(s));}));
+ v14id('presetGo'+n).addEventListener('click',()=>v14Action(()=>v14Send('P'+n+'GO')));
+}
+// 画面が開いている間は2秒ごとに状態を読み直す。設定全体は手動・接続時に同期。
+setInterval(()=>{if(!document.hidden&&connected&&clockFeatureReady&&!v14id('clockPane').hidden)clockSync(false);},2000);
+</script>
+
 </body>
 </html>
