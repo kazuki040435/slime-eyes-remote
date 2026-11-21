@@ -45,6 +45,18 @@
 .clock-alarm-toggle{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0}
 .clock-alarm-toggle button{min-height:46px}
 
+
+/* Ver14.3: ambient-light calibration */
+.light-measure{padding:15px;border-radius:14px;background:#eaf6fd;text-align:center;margin-top:12px;color:#3b7494}
+.light-measure strong{font-size:36px;display:block;color:#1266a1;font-variant-numeric:tabular-nums;line-height:1.4}
+.light-measure small{display:block;font-size:12px}
+.light-bar{height:9px;background:#dbeaf2;border-radius:20px;overflow:hidden;margin-top:8px}
+#lightBarFill{width:0%;height:100%;background:linear-gradient(90deg,#5a89d6,#f6c45e);transition:width .25s}
+.light-form{margin-top:15px;display:grid;gap:8px}
+.light-form label{font-weight:800;font-size:13px;margin-top:5px}
+.light-input-row{display:grid;grid-template-columns:100px minmax(0,1fr);gap:8px}
+.light-input-row input{min-width:0;width:100%;border-radius:12px;border:1px solid #c8e5f5;padding:12px;font:inherit;color:#17557b;background:white}
+.light-input-row button{min-height:44px;padding:6px;font-size:12px}
 </style>
 </head>
 <body>
@@ -70,6 +82,18 @@
 <input id="volumeSlider" class="volume-range" type="range" min="0" max="30" step="1" value="20" disabled aria-label="スラリンの声の大きさ">
 <div class="volume-ends"><span>🔇 0（消音）</span><span>🔊 30（最大）</span></div>
 <p class="hint">スライダーを動かすとスラリンの声の大きさを変更するよ。</p>
+</section>
+<section class="panel" id="lightPanel" aria-label="スラリンの明るさ設定">
+<h2 class="section-title">🌙 明るさセンサー・スリープ設定</h2>
+<p class="hint">本体CdSセンサーの現在値を測って、寝る／起きる明るさを設定するよ。値が大きいほど明るいよ。</p>
+<div class="light-measure"><div>現在の明るさ（平滑化値）</div><strong id="lightLive">--</strong><small> / 4095　生の値：<span id="lightRaw">--</span></small></div>
+<div class="light-bar"><div id="lightBarFill"></div></div>
+<div class="clock-btn-grid" style="margin-top:12px"><button class="secondary clock-button" id="lightMeasure" type="button">🔄 今の明るさを測定</button><button class="secondary clock-button" id="lightRefresh" type="button">📥 保存設定を再取得</button></div>
+<div class="light-form"><label for="lightSleep">🌙 寝る明るさ（これ以下）</label><div class="light-input-row"><input id="lightSleep" type="number" min="0" max="4094" step="1" value="400" inputmode="numeric"><button class="secondary" id="lightCaptureSleep" type="button">今の明るさを取り込む</button></div>
+<label for="lightWake">☀️ 起きる明るさ（これ以上）</label><div class="light-input-row"><input id="lightWake" type="number" min="1" max="4095" step="1" value="600" inputmode="numeric"><button class="secondary" id="lightCaptureWake" type="button">今の明るさを取り込む</button></div></div>
+<button id="lightSave" class="primary" type="button" style="width:100%;margin-top:12px">💾 明るさ設定を本体に保存</button>
+<p id="lightMessage" class="hint" aria-live="polite">BLE接続後、センサーの測定値と保存済み設定を取得するよ。</p>
+<p class="hint">睡眠値は起床値より小さく設定してね。判定は従来どおり約2秒。設定はESP32本体のNVSに保存され、電源を切っても残るよ。</p>
 </section>
 </div>
 <div id="clockPane" class="tab-pane" hidden>
@@ -509,6 +533,64 @@ for(let n=1;n<=5;n++){
 }
 // 画面が開いている間は2秒ごとに状態を読み直す。設定全体は手動・接続時に同期。
 setInterval(()=>{if(!document.hidden&&connected&&clockFeatureReady&&!v14id('clockPane').hidden)clockSync(false);},2000);
+
+// Ver14.3: Read live CdS brightness and saved thresholds from the ESP32 over BLE.
+const LIGHT_STATE_UUID='7d3b0004-5c27-4b78-9f9a-2d2c7be3a001';
+const LIGHT_CONFIG_UUID='7d3b0005-5c27-4b78-9f9a-2d2c7be3a001';
+let lightStateChar=null,lightConfigChar=null,lightNow=null,lightReading=false,lightSaving=false;
+function lightMsg(message,isError=false){const el=$('lightMessage');el.textContent=message;el.style.color=isError?'#bd3c55':'#527d98';}
+function lightParse(text){const m=/^L(\d{4}),(\d{4})$/.exec(text.trim());return m?[Number(m[1]),Number(m[2])]:null;}
+async function lightRead(character){const dv=await character.readValue();const parsed=lightParse(new TextDecoder().decode(dv));if(!parsed)throw Error('本体の明るさデータ形式が不正です');return parsed;}
+async function lightMeasure(silent=false){
+ if(!connected||!lightStateChar){if(!silent)lightMsg('先に対応本体へBLE接続してください。',true);return;}
+ if(lightReading)return;
+ lightReading=true;
+ try{const [raw,avg]=await lightRead(lightStateChar);lightNow=avg;$('lightRaw').textContent=raw;$('lightLive').textContent=avg;$('lightBarFill').style.width=(avg/4095*100)+'%';if(!silent)lightMsg('測定したよ！ 現在の明るさ：'+avg+'（生値 '+raw+'）');}
+ catch(e){if(!silent)lightMsg('測定に失敗: '+e.message,true);}
+ finally{lightReading=false;}
+}
+async function lightRefresh(silent=false){
+ if(!connected||!lightConfigChar){if(!silent)lightMsg('先に対応本体へBLE接続してください。',true);return;}
+ try{const [dark,bright]=await lightRead(lightConfigChar);$('lightSleep').value=dark;$('lightWake').value=bright;if(!silent)lightMsg('本体に保存された設定：寝る '+dark+' ／ 起きる '+bright);}
+ catch(e){lightMsg('設定の取得に失敗: '+e.message,true);}
+}
+async function lightConnect(){
+ lightStateChar=null;lightConfigChar=null;lightNow=null;
+ try{const service=await device.gatt.getPrimaryService(SERVICE_UUID);lightStateChar=await service.getCharacteristic(LIGHT_STATE_UUID);lightConfigChar=await service.getCharacteristic(LIGHT_CONFIG_UUID);await lightRefresh(true);await lightMeasure(true);lightMsg('ESP32から現在値と保存設定を取得したよ。');}
+ catch(e){lightStateChar=null;lightConfigChar=null;lightMsg('明るさ設定に非対応の本体です。Ver94.6を書き込んでね。',true);}
+}
+const lightBaseSetupConnection=setupConnection;
+setupConnection=async function(target){await lightBaseSetupConnection(target);await lightConnect();};
+const lightBaseDisconnected=onDisconnected;
+onDisconnected=function(){lightStateChar=null;lightConfigChar=null;lightNow=null;lightMsg('BLEが切断されました。接続後に再取得するよ。');lightBaseDisconnected();};
+$('lightMeasure').addEventListener('click',()=>lightMeasure());
+$('lightRefresh').addEventListener('click',()=>lightRefresh());
+$('lightCaptureSleep').addEventListener('click',()=>{
+ if(lightNow===null){lightMsg('先に「今の明るさを測定」を押してね。',true);return;}
+ $('lightSleep').value=lightNow;lightMsg('寝る明るさに '+lightNow+' を取り込んだよ。保存ボタンで確定してね。');
+});
+$('lightCaptureWake').addEventListener('click',()=>{
+ if(lightNow===null){lightMsg('先に「今の明るさを測定」を押してね。',true);return;}
+ $('lightWake').value=lightNow;lightMsg('起きる明るさに '+lightNow+' を取り込んだよ。保存ボタンで確定してね。');
+});
+$('lightSave').addEventListener('click',async()=>{
+ if(lightSaving)return;
+ const dark=Number($('lightSleep').value),bright=Number($('lightWake').value);
+ if(!Number.isInteger(dark)||!Number.isInteger(bright)||dark<0||bright>4095||dark>=bright){lightMsg('寝る値と起きる値は0〜4095、かつ「寝る値 ＜ 起きる値」にしてね。',true);return;}
+ if(!connected||!lightConfigChar){lightMsg('先にVer94.6の本体とBLE接続してね。',true);return;}
+ lightSaving=true;$('lightSave').disabled=true;
+ try{
+  const cmd='LX'+String(dark).padStart(4,'0')+','+String(bright).padStart(4,'0');
+  if(!await sendCommand(cmd))throw Error('送信できませんでした');
+  // The main ESP32 loop receives the BLE command asynchronously.
+  await new Promise(r=>setTimeout(r,350));
+  const [actualDark,actualBright]=await lightRead(lightConfigChar);
+  if(actualDark!==dark||actualBright!==bright)throw Error('本体の保存値が一致しません。再取得して確認してね。');
+  lightMsg('✅ 本体に保存したよ！ 寝る：'+actualDark+' ／ 起きる：'+actualBright+'（電源OFF後も保持）');
+ }catch(e){lightMsg('保存確認エラー: '+e.message,true);}
+ finally{lightSaving=false;$('lightSave').disabled=false;}
+});
+setInterval(()=>{if(!document.hidden&&connected&&lightStateChar)lightMeasure(true);},1500);
 </script>
 
 </body>
