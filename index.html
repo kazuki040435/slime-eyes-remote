@@ -534,9 +534,9 @@ for(let n=1;n<=5;n++){
 // 画面が開いている間は2秒ごとに状態を読み直す。設定全体は手動・接続時に同期。
 setInterval(()=>{if(!document.hidden&&connected&&clockFeatureReady&&!v14id('clockPane').hidden)clockSync(false);},2000);
 
-// Ver14.3: Read live CdS brightness and saved thresholds from the ESP32 over BLE.
-const LIGHT_STATE_UUID='7d3b0004-5c27-4b78-9f9a-2d2c7be3a001';
-const LIGHT_CONFIG_UUID='7d3b0005-5c27-4b78-9f9a-2d2c7be3a001';
+// Ver14.4: CdS UUIDs 0008/0009; clock state/config keep 0004/0005.
+const LIGHT_STATE_UUID='7d3b0008-5c27-4b78-9f9a-2d2c7be3a001';
+const LIGHT_CONFIG_UUID='7d3b0009-5c27-4b78-9f9a-2d2c7be3a001';
 let lightStateChar=null,lightConfigChar=null,lightNow=null,lightReading=false,lightSaving=false;
 function lightMsg(message,isError=false){const el=$('lightMessage');el.textContent=message;el.style.color=isError?'#bd3c55':'#527d98';}
 function lightParse(text){const m=/^L(\d{4}),(\d{4})$/.exec(text.trim());return m?[Number(m[1]),Number(m[2])]:null;}
