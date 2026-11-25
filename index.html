@@ -202,7 +202,7 @@ for(let i=0;i<=28;i++){
  const cell=document.createElement('div');cell.className='pattern-cell';const star=document.createElement('button');star.className='star';star.dataset.star=String(i);star.addEventListener('click',()=>toggleFavorite(i));cell.append(button,star);$('patterns').appendChild(cell);patternButtons.push(button);
 }
 updateStars();renderFavorites();
-const AUDIO_NAMES=['ピキー','ピッキー','ピキピキ','ピッキ','心配しないで','キラーン','ピロン','ポッポ','ボーン！ボッポ','アラーム'];
+const AUDIO_NAMES=['ピキー','ピッキー','ピキピキ','ピッキ','心配しないで','キラーン','ピロン','ボーン！ボッポ','ポッポポッポ','アラーム'];
 const audioButtons=[];
 for(let i=1;i<=10;i++){
  const code='S'+String(i).padStart(2,'0');
